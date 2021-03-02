@@ -1,0 +1,128 @@
+.cp-ticker {
+
+  background-color: #131722;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  min-height: 300px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+
+  &__inner {
+    padding: 30px 15px;
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+
+    span {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: contain;
+      display: inline-block;
+      height: 34px;
+      margin-right: 15px;
+      width: 34px;
+    }
+  }
+
+  &__bottom {
+    bottom: 0;
+    left: 0;
+    padding: 0 0 45px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+  }
+
+  &__percentage {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 15px;
+  }
+
+  &__price {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  &--loading {
+    background-image: none !important;
+  }
+
+  &--tBTCUSD {
+    background-image: url('../images/charts/bitcoin-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/bitcoin.svg');
+    }
+  }
+
+  &--tETHUSD {
+    background-image: url('../images/charts/ethereum-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/ethereum.svg');
+    }
+  }
+
+  &--tADAUSD {
+    background-image: url('../images/charts/cardano-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/ada.svg');
+    }
+  }
+
+  &--tUSTUSD {
+    background-image: url('../images/charts/tether-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/tether.svg');
+    }
+  }
+
+  &--tDOTUSD {
+    background-image: url('../images/charts/polkadot-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/polkadot.svg');
+    }
+  }
+
+  &--tXRPUSD {
+    background-image: url('../images/charts/ripple-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/xrp.svg');
+    }
+  }
+
+  &--tLTCUSD {
+    background-image: url('../images/charts/litecoin-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/litecoin.svg');
+    }
+  }
+
+  &--tXLMUSD {
+    background-image: url('../images/charts/stellar-chart.png');
+    .cp-ticker__title span {
+      background-image: url('../images/logos/xlm.svg');
+    }
+  }
+
+}
+
+$symbols: ("tBTCUSD", "tETHUSD", "tADAUSD", "tUSTUSD", "tDOTUSD", "tXRPUSD", "tLTCUSD", "tXLMUSD");
+
+@each $symbol in $symbols {
+  .price-bounce-#{$symbol} {
+    animation: animate-keyframes-#{$symbol} 1s;
+  }
+
+  @keyframes animate-keyframes-#{$symbol} {
+    from {opacity: 0.01}
+    to {opacity: 1}
+  }
+}

@@ -1,0 +1,47 @@
+/* =Mixins
+-------------------------------------------------------------- */
+@function calculateRem($sizeInPx) {
+  $remSize: $sizeInPx / 16;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($sizeInPx) {
+  font-size: $sizeInPx + px; //Fallback in px
+  font-size: calculateRem($sizeInPx);
+}
+
+/*
+ * Breakpoints mixin. Makes media queries easier.
+ * Choose a point from the defined variable $breakpoints in _variables.scss or set your own.
+ */
+@mixin bp($point, $type: min, $media: screen) {
+  // Look in the keys first
+  @if map-has-key($breakpoints, $point) {
+    @if $type == max {
+      @media only #{$media} and ( max-width: #{inspect( map-get( $breakpoints, $point ) )} ) {
+        @content;
+      }
+    } @else if $type == min {
+      @media only #{$media} and ( min-width: #{inspect( map-get( $breakpoints, $point ) )} ) {
+        @content;
+      }
+    }
+  }
+  // Fallback to a 'manual' breakpoint.
+  // Check to make sure that it is a number and has a unit (px, em).
+  @else if type-of($point) == number and not unitless($point) {
+    @if $type == max {
+      @media only #{$media} and ( max-width: #{$point} ) {
+        @content;
+      }
+    } @else if $type == min {
+      @media only #{$media} and ( min-width: #{$point} ) {
+        @content;
+      }
+    }
+  }
+  // The point wasn't in the $breakpoints variable and isn't a valid unit.
+  @else {
+    @error "`#{$point}` is not a valid breakpoint.";
+  }
+}

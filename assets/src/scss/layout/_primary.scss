@@ -1,0 +1,20 @@
+html {
+  background: #1b2134 url('../images/bg.jpg') no-repeat top center;
+  background-size: cover;
+}
+
+.page {
+
+  margin: 50px 0;
+
+  &__row {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  &__contain {
+    padding: 60px 30px;
+  }
+
+}

@@ -1,0 +1,295 @@
+/* =Mixins
+-------------------------------------------------------------- */
+/*
+ * Breakpoints mixin. Makes media queries easier.
+ * Choose a point from the defined variable $breakpoints in _variables.scss or set your own.
+ */
+/* =Variables
+-------------------------------------------------------------- */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/* =Fonts
+*
+* Example:
+*
+* @include font-face("source-sans-pro", "../fonts/source-sans-pro/source-sans-pro-regular", $file-formats: eot woff2 woff ttf);
+* @include font-face("source-sans-pro", "../fonts/source-sans-pro/source-sans-pro-bold", bold, $file-formats: eot woff2 woff);
+* @include font-face("source-sans-pro", "../fonts/source-sans-pro/source-sans-pro-italic", normal, italic, $file-formats: eot woff2 woff);
+-------------------------------------------------------------- */
+/* =Typography
+-------------------------------------------------------------- */
+html {
+  font-size: 100%; }
+
+body {
+  font-size: 16px;
+  font-size: 1rem;
+  color: #282728;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  line-height: 1.35; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 1.1; }
+
+.cp-loader {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  font-size: 10px;
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 3px solid rgba(0, 0, 0, 0.2);
+  border-right: 3px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0); }
+  .cp-loader:after {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px; }
+
+.cp-loader--small {
+  width: 16px;
+  height: 16px;
+  border-width: 1px; }
+  .cp-loader--small:after {
+    width: 16px;
+    height: 16px; }
+
+.root-tickers {
+  color: #FFF;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  @media (max-width: 1200px) {
+    .root-tickers {
+      justify-content: center; } }
+  .root-tickers__ticker {
+    padding: 15px;
+    max-width: 285px;
+    width: 25%; }
+    @media (max-width: 1200px) {
+      .root-tickers__ticker {
+        width: 50%; } }
+    @media (max-width: 600px) {
+      .root-tickers__ticker {
+        width: 100%; } }
+
+.cp-ticker {
+  background-color: #131722;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  min-height: 300px;
+  overflow: hidden;
+  position: relative;
+  text-align: center; }
+  .cp-ticker__inner {
+    padding: 30px 15px; }
+  .cp-ticker__title {
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center; }
+    .cp-ticker__title span {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: contain;
+      display: inline-block;
+      height: 34px;
+      margin-right: 15px;
+      width: 34px; }
+  .cp-ticker__bottom {
+    bottom: 0;
+    left: 0;
+    padding: 0 0 45px;
+    position: absolute;
+    right: 0;
+    text-align: center; }
+  .cp-ticker__percentage {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 15px; }
+  .cp-ticker__price {
+    font-size: 28px;
+    font-weight: 500; }
+  .cp-ticker--loading {
+    background-image: none !important; }
+  .cp-ticker--tBTCUSD {
+    background-image: url("../images/charts/bitcoin-chart.png"); }
+    .cp-ticker--tBTCUSD .cp-ticker__title span {
+      background-image: url("../images/logos/bitcoin.svg"); }
+  .cp-ticker--tETHUSD {
+    background-image: url("../images/charts/ethereum-chart.png"); }
+    .cp-ticker--tETHUSD .cp-ticker__title span {
+      background-image: url("../images/logos/ethereum.svg"); }
+  .cp-ticker--tADAUSD {
+    background-image: url("../images/charts/cardano-chart.png"); }
+    .cp-ticker--tADAUSD .cp-ticker__title span {
+      background-image: url("../images/logos/ada.svg"); }
+  .cp-ticker--tUSTUSD {
+    background-image: url("../images/charts/tether-chart.png"); }
+    .cp-ticker--tUSTUSD .cp-ticker__title span {
+      background-image: url("../images/logos/tether.svg"); }
+  .cp-ticker--tDOTUSD {
+    background-image: url("../images/charts/polkadot-chart.png"); }
+    .cp-ticker--tDOTUSD .cp-ticker__title span {
+      background-image: url("../images/logos/polkadot.svg"); }
+  .cp-ticker--tXRPUSD {
+    background-image: url("../images/charts/ripple-chart.png"); }
+    .cp-ticker--tXRPUSD .cp-ticker__title span {
+      background-image: url("../images/logos/xrp.svg"); }
+  .cp-ticker--tLTCUSD {
+    background-image: url("../images/charts/litecoin-chart.png"); }
+    .cp-ticker--tLTCUSD .cp-ticker__title span {
+      background-image: url("../images/logos/litecoin.svg"); }
+  .cp-ticker--tXLMUSD {
+    background-image: url("../images/charts/stellar-chart.png"); }
+    .cp-ticker--tXLMUSD .cp-ticker__title span {
+      background-image: url("../images/logos/xlm.svg"); }
+
+.price-bounce-tBTCUSD {
+  animation: animate-keyframes-tBTCUSD 1s; }
+
+@keyframes animate-keyframes-tBTCUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tETHUSD {
+  animation: animate-keyframes-tETHUSD 1s; }
+
+@keyframes animate-keyframes-tETHUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tADAUSD {
+  animation: animate-keyframes-tADAUSD 1s; }
+
+@keyframes animate-keyframes-tADAUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tUSTUSD {
+  animation: animate-keyframes-tUSTUSD 1s; }
+
+@keyframes animate-keyframes-tUSTUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tDOTUSD {
+  animation: animate-keyframes-tDOTUSD 1s; }
+
+@keyframes animate-keyframes-tDOTUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tXRPUSD {
+  animation: animate-keyframes-tXRPUSD 1s; }
+
+@keyframes animate-keyframes-tXRPUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tLTCUSD {
+  animation: animate-keyframes-tLTCUSD 1s; }
+
+@keyframes animate-keyframes-tLTCUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+.price-bounce-tXLMUSD {
+  animation: animate-keyframes-tXLMUSD 1s; }
+
+@keyframes animate-keyframes-tXLMUSD {
+  from {
+    opacity: 0.01; }
+  to {
+    opacity: 1; } }
+
+html {
+  background: #1b2134 url("../images/bg.jpg") no-repeat top center;
+  background-size: cover; }
+
+.page {
+  margin: 50px 0; }
+  .page__row {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%; }
+  .page__contain {
+    padding: 60px 30px; }

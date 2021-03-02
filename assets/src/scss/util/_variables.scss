@@ -1,0 +1,13 @@
+/* =Variables
+-------------------------------------------------------------- */
+$xs-max: 500px; // Set xs breakpoint's max width
+$sm-max: 767px; // Set sm breakpoint's max width
+$md-max: 991px; // Set md breakpoint's max width
+$lg-max: 1200px; // Set lg breakpoint's max width
+
+$breakpoints: (
+  "xs": $xs-max,
+  "sm": $sm-max,
+  "md": $md-max,
+  "lg": $lg-max,
+) !default;

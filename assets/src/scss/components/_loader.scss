@@ -1,0 +1,34 @@
+.cp-loader {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  font-size: 10px;
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 3px solid rgba(0, 0, 0, 0.2);
+  border-right: 3px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+
+  &:after {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.cp-loader--small {
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+
+  &:after {
+    width: 16px;
+    height: 16px;
+  }
+}
